@@ -109,6 +109,24 @@ namespace TestCase.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateCategory(Category model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.Categories.AddAsync(model);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
 
     }
 }
