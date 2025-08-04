@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Category>
+
+<select class="form-select" name="CategoryId">
+    <option value="">Select Category</option>
+    @foreach (var category in Model)
+    {
+        <option value="@category.Id"
+                selected="@(ViewBag.SelectedCategoryId != null && ViewBag.SelectedCategoryId.ToString() == category.Id.ToString() ? "selected" : null)">
+            @category.CategoryName
+        </option>
+
+    }
+</select>

@@ -1,0 +1,16 @@
+﻿@model List<Product>
+
+
+@foreach(var item in Model)
+{
+    <div class="card" style="width: 18rem; float:left;margin-right:5px">     
+        <div class="card-body">
+            <h5 class="card-title">@item.Title</h5>
+            <p class="card-text">@item.Description</p>
+            <br />
+            <p class="card-text">Stock :@item.Quantity <br /> Category : @item.Category?.CategoryName </p>
+            <a asp-controller="Home" asp-action="EditProduct" asp-route-id ="@item.Id" class="btn btn-primary">Edit</a>
+            <a asp-controller="Home" asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+}
